@@ -1,7 +1,9 @@
 mod wallet;
-
+mod customer;
+ 
 use wallet::Wallet;
+use customer::Customer;
 
 fn main() {
-    println!("Hello, world!");
+    let customer = Customer::new("Andy", "Wu", 1000.00);
 }
