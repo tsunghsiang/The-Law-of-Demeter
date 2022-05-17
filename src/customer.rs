@@ -1,5 +1,6 @@
 use crate::wallet::Wallet;
 
+#[derive(Clone)]
 pub struct Customer {
     first_name: String,
     last_name: String,
@@ -23,7 +24,7 @@ impl Customer {
         &self.first_name
     }
 
-    pub fn get_wallet(&self) -> &Wallet {
-        &self.wallet
+    pub fn get_wallet(&mut self) -> &mut Wallet {
+        &mut self.wallet
     }
 }

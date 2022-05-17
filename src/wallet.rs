@@ -1,5 +1,5 @@
 use contracts::requires;
-
+#[derive(Copy, Clone)]
 pub struct Wallet {
     balance: f32,
 }
