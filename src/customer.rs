@@ -21,10 +21,19 @@ impl Customer {
     }
 
     pub fn get_last_name(&self) -> &str {
-        &self.first_name
+        &self.last_name
     }
 
-    pub fn get_wallet(&mut self) -> &mut Wallet {
-        &mut self.wallet
+    //pub fn get_wallet(&mut self) -> &mut Wallet {
+    //    &mut self.wallet
+    //}
+
+    pub fn payment(&mut self, price: f32) -> bool {
+        if price <= self.wallet.get_balance() {
+            self.wallet.subtract(price);
+            true
+        } else {
+            false
+        }
     }
 }

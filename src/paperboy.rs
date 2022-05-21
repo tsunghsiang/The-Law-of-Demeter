@@ -21,7 +21,7 @@ impl Paperboy {
     }
 
     pub fn get_last_name(&self) -> &str {
-        &self.first_name
+        &self.last_name
     }
 
     pub fn serve(&mut self, customer: Option<Customer>) {
@@ -32,7 +32,11 @@ impl Paperboy {
 
     pub fn demand(&mut self, price: f32) {
         if let Some(ref mut person) = self.customer {
-            person.get_wallet().subtract(price);
+            let res: bool = person.payment(price);
+            match res {
+                true => { println!("{}", format!("${} paid by {} {}", price, person.get_first_name(), person.get_last_name())); },
+                false => { println!("{}", format!("not paid by {} {}", person.get_first_name(), person.get_last_name())); },
+            };
         }
     }
 
